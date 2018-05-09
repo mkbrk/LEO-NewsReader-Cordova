@@ -25,7 +25,7 @@
 
 <body>
     <div class="app">
-        <table style="width:100%;margin-bottom:20px;">
+        <table style="margin-bottom:20px;">
             <tr>
                 <td valign="middle" style="text-align:center;font-size:20px;">
                     <div>
@@ -35,11 +35,11 @@
                     <div>
                 </td>
                 <td>
-                    <input style="font-size:20px;padding:4px;" type="search" onsearch="app.runQuery(this.value);" placeholder="search" />
+                    <input style="font-size:20px;padding:4px;max-width:200px;" type="search" onsearch="app.runQuery(this.value);" placeholder="search" />
+                    
                 </td>
-                <td>
-                    <a href="javascript:app.showMap();" class="btn">Map</a>
-                </td>
+                <td><a href="javascript:app.showMap();" class="btn">Map</a></td>
+
             </tr>
         </table>
         
