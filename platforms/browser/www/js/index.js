@@ -99,18 +99,23 @@ window.app = {
         else
         {
             var markers = [];
+            var centerOn = null;
             if(app.currentResults != null)
             {
                 for (var i = 0; i < app.currentResults.Results.length; i++) {
+
                     var doc = app.currentResults.Results[i].Document;
                     if(doc.Location && doc.Location != null)
                     {
+                        if(centerOn == null)
+                            centerOn = {lat: doc.Location.Latitude, lng: doc.Location.Longitude};
+                        
                         markers.push(
                             {
                                 lat: doc.Location.Latitude,
                                 lng: doc.Location.Longitude,
                                 title: doc.ObservationTitle,
-                                subtitle: doc.LocationDescription
+                                subtitle: doc.LocalizedObservationDate
                             }   
                         );
                     }
@@ -124,11 +129,8 @@ window.app = {
                       top: 70, // default 0
                       bottom: 0 // default 0
                     },
-                    //center: { // optional, without a default
-                    //  lat: 52.3702160,
-                    //  lng: 4.8951680
-                    //},
-                    //zoomLevel: 12, // 0 (the entire world) to 20, default 10
+                    center: centerOn,
+                    zoomLevel: 13, // 0 (the entire world) to 20, default 10
                     showUserLocation: false, // your app will ask permission to the user, default false
                     hideAttribution: true, // default false, Mapbox requires this default if you're on a free plan
                     hideLogo: true, // default false, Mapbox requires this default if you're on a free plan
@@ -150,6 +152,18 @@ window.app = {
                     alert("Error :( " + JSON.stringify(msg));
                   }
                 );
+
+                Mapbox.addMarkerCallback(function (selectedMarker) {
+                    //see if we can find the one that was selected
+                    if(app.currentResults != null)
+                    {
+                        for (var i = 0; i < app.currentResults.Results.length; i++) {
+                            var doc = app.currentResults.Results[i].Document;
+                            if(doc.ObservationTitle == selectedMarker.title && doc.LocalizedObservationDate == selectedMarker.subtitle)
+                                app.show(doc.ObservationID);
+                        };
+                    }
+                });
             }
         }
         app._SHOWINGMAP = !app._SHOWINGMAP;

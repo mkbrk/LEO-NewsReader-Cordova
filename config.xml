@@ -2,7 +2,7 @@
 <widget id="org.leonetwork.newsreader" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>LEO News Reader</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
+        
     </description>
     <author email="contact@leonetwork.org" href="https://www.leonetwork.org">
         PhoneGap Team

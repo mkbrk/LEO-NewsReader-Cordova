@@ -8,7 +8,6 @@
     </feature>
     <name>LEO News Reader</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
     </description>
     <author email="contact@leonetwork.org" href="https://www.leonetwork.org">
         PhoneGap Team
