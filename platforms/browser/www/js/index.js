@@ -144,26 +144,26 @@ window.app = {
 
                   // optional success callback
                   function(msg) {
-                    console.log("Success :) " + JSON.stringify(msg));
-                  },
+                    Mapbox.addMarkerCallback(function (selectedMarker) {
+                            //see if we can find the one that was selected
+                            if(app.currentResults != null)
+                            {
+                                for (var i = 0; i < app.currentResults.Results.length; i++) {
+                                    var doc = app.currentResults.Results[i].Document;
+                                    if(doc.ObservationTitle == selectedMarker.title && doc.LocalizedObservationDate == selectedMarker.subtitle)
+                                        app.show(doc.ObservationID);
+                                };
+                            }
+                        });
+                      },
 
-                  // optional error callback
-                  function(msg) {
-                    alert("Error :( " + JSON.stringify(msg));
-                  }
-                );
+                      // optional error callback
+                      function(msg) {
+                        alert("Error :( " + JSON.stringify(msg));
+                      }
+                    );
 
-                Mapbox.addMarkerCallback(function (selectedMarker) {
-                    //see if we can find the one that was selected
-                    if(app.currentResults != null)
-                    {
-                        for (var i = 0; i < app.currentResults.Results.length; i++) {
-                            var doc = app.currentResults.Results[i].Document;
-                            if(doc.ObservationTitle == selectedMarker.title && doc.LocalizedObservationDate == selectedMarker.subtitle)
-                                app.show(doc.ObservationID);
-                        };
-                    }
-                });
+
             }
         }
         app._SHOWINGMAP = !app._SHOWINGMAP;
