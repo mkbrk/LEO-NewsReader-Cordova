@@ -25,24 +25,25 @@
 
 <body>
     <div class="app">
-        <table style="margin-bottom:20px;">
-            <tr>
-                <td valign="middle" style="text-align:center;font-size:20px;">
-                    <div>
-                        <a href="javascript:app.runQuery();" style="display:flex;align-items:center;white-space:nowrap;text-decoration:none;color:black;">
-                            <img src="img/logo.png" style="max-width:50px;"/> News
-                        </a>
-                    <div>
-                </td>
-                <td>
-                    <input style="font-size:20px;padding:4px;max-width:200px;" type="search" onsearch="app.runQuery(this.value);" placeholder="search" />
-                    
-                </td>
-                <td><a href="javascript:app.showMap();" class="btn">Map</a></td>
+        <div style="height:70px;">
+            <table>
+                <tr>
+                    <td valign="middle" style="text-align:center;font-size:20px;">
+                        <div>
+                            <a href="javascript:app.runQuery();" style="display:flex;align-items:center;white-space:nowrap;text-decoration:none;color:black;">
+                                <img src="img/logo.png" style="max-width:50px;"/> News
+                            </a>
+                        <div>
+                    </td>
+                    <td>
+                        <input style="font-size:20px;padding:4px;max-width:200px;" type="search" onsearch="app.runQuery(this.value);" placeholder="search" />
+                        
+                    </td>
+                    <td><a href="javascript:app.toggleMap();" class="btn">Map</a></td>
 
-            </tr>
-        </table>
-        
+                </tr>
+            </table>
+        </div>
 
         <div id="working" style="display:none;">
             <img src="img/ajax-loader.gif"/>

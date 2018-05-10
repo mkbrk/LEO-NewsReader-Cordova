@@ -8,10 +8,12 @@ window.app = {
             //start-up code in here...
             $.support.cors = true;
 
-            //$.get("categories.json", null, function(res) {
-            //    app.categories = res;
-            //    $("#categories").html(app.applyTemplate("category_template", res));
-            //}, "json");
+            $.get("categories.json", null, function(res) {
+                app.categories = {};
+                for (var i = 0; i < res.length; i++) {
+                    app.categories[res[i].CategoryID] = res[i];
+                };
+            }, "json");
 
             app.runQuery();
         }, false);
@@ -87,49 +89,70 @@ window.app = {
         window.plugins.socialsharing.shareWithOptions(options);
     },
 
-    showMap : function() {
-        Mapbox.show(
-          {
-            style: 'emerald', // light|dark|emerald|satellite|streets , default 'streets'
-            margins: {
-              left: 0, // default 0
-              right: 0, // default 0
-              top: 316, // default 0
-              bottom: 50 // default 0
-            },
-            center: { // optional, without a default
-              lat: 52.3702160,
-              lng: 4.8951680
-            },
-            zoomLevel: 12, // 0 (the entire world) to 20, default 10
-            showUserLocation: true, // your app will ask permission to the user, default false
-            hideAttribution: false, // default false, Mapbox requires this default if you're on a free plan
-            hideLogo: false, // default false, Mapbox requires this default if you're on a free plan
-            hideCompass: false, // default false
-            disableRotation: false, // default false
-            disableScroll: false, // default false
-            disableZoom: false, // default false
-            disablePitch: false, // disable the two-finger perspective gesture, default false
-            markers: [
-              {
-                lat: 52.3732160,
-                lng: 4.8941680,
-                title: 'Nice location',
-                subtitle: 'Really really nice location'
-              }
-            ]
-          },
+    _SHOWINGMAP : false,
 
-          // optional success callback
-          function(msg) {
-            console.log("Success :) " + JSON.stringify(msg));
-          },
+    toggleMap : function() {
+        if(app._SHOWINGMAP)
+        {
+            Mapbox.hide({});            
+        }
+        else
+        {
+            var markers = [];
+            if(app.currentResults != null)
+            {
+                for (var i = 0; i < app.currentResults.Results.length; i++) {
+                    var doc = app.currentResults.Results[i].Document;
+                    if(doc.Location && doc.Location != null)
+                    {
+                        markers.push(
+                            {
+                                lat: doc.Location.Latitude,
+                                lng: doc.Location.Longitude,
+                                title: doc.ObservationTitle,
+                                subtitle: doc.LocationDescription
+                            }   
+                        );
+                    }
+                };
 
-          // optional error callback
-          function(msg) {
-            alert("Error :( " + JSON.stringify(msg));
-          }
-        );
+                Mapbox.show({
+                    style: 'light', // light|dark|emerald|satellite|streets , default 'streets'
+                    margins: {
+                      left: 0, // default 0
+                      right: 0, // default 0
+                      top: 70, // default 0
+                      bottom: 0 // default 0
+                    },
+                    //center: { // optional, without a default
+                    //  lat: 52.3702160,
+                    //  lng: 4.8951680
+                    //},
+                    //zoomLevel: 12, // 0 (the entire world) to 20, default 10
+                    showUserLocation: false, // your app will ask permission to the user, default false
+                    hideAttribution: true, // default false, Mapbox requires this default if you're on a free plan
+                    hideLogo: true, // default false, Mapbox requires this default if you're on a free plan
+                    hideCompass: false, // default false
+                    disableRotation: false, // default false
+                    disableScroll: false, // default false
+                    disableZoom: false, // default false
+                    disablePitch: false, // disable the two-finger perspective gesture, default false
+                    markers: markers
+                  },
+
+                  // optional success callback
+                  function(msg) {
+                    console.log("Success :) " + JSON.stringify(msg));
+                  },
+
+                  // optional error callback
+                  function(msg) {
+                    alert("Error :( " + JSON.stringify(msg));
+                  }
+                );
+            }
+        }
+        app._SHOWINGMAP = !app._SHOWINGMAP;
     },
 
     loadSimilar : function (obsID) {
