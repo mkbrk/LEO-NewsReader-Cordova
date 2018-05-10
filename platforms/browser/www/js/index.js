@@ -130,7 +130,7 @@ window.app = {
                       bottom: 0 // default 0
                     },
                     center: centerOn,
-                    zoomLevel: 13, // 0 (the entire world) to 20, default 10
+                    zoomLevel: 8, // 0 (the entire world) to 20, default 10
                     showUserLocation: false, // your app will ask permission to the user, default false
                     hideAttribution: true, // default false, Mapbox requires this default if you're on a free plan
                     hideLogo: true, // default false, Mapbox requires this default if you're on a free plan

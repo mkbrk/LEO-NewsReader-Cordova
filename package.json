@@ -1,0 +1,31 @@
+{
+  "name": "leonewsreader",
+  "version": "1.0.0",
+  "description": "A PhoneGap Hello World template",
+  "main": "index.js",
+  "dependencies": {
+    "cordova-check-plugins": "^4.0.2",
+    "cordova-plugin-inappbrowser": "^3.0.0",
+    "cordova-plugin-mapbox": "^1.2.3",
+    "cordova-plugin-statusbar": "^2.4.2",
+    "cordova-plugin-x-socialsharing": "^5.4.0",
+    "es6-promise-plugin": "^4.2.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://mkbrk@bitbucket.org/mkbrk/leo-newsreader-cordova.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/mkbrk/leo-newsreader-cordova#readme",
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-statusbar": {},
+      "cordova-plugin-inappbrowser": {}
+    }
+  }
+}

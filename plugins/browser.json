@@ -7,6 +7,19 @@
         "files": {}
     },
     "installed_plugins": {
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "org.leonetwork.newsreader"
+        },
+        "cordova-plugin-mapbox": {
+            "ACCESS_TOKEN": "pk.eyJ1IjoibGVvbmV0d29yayIsImEiOiIzZTcwOTc5YjA3ZGQwZWNlNjMyMjIwOWIxNmVhMTExNSJ9.0Bj60Y4gR_bkN3AobSIeaA",
+            "PACKAGE_NAME": "org.leonetwork.newsreader"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "org.leonetwork.newsreader"
+        },
+        "cordova-plugin-x-socialsharing": {
+            "PACKAGE_NAME": "org.leonetwork.newsreader"
+        },
         "cordova-plugin-battery-status": {
             "PACKAGE_NAME": "org.leonetwork.newsreader"
         },
@@ -43,9 +56,6 @@
         "cordova-plugin-globalization": {
             "PACKAGE_NAME": "org.leonetwork.newsreader"
         },
-        "cordova-plugin-inappbrowser": {
-            "PACKAGE_NAME": "org.leonetwork.newsreader"
-        },
         "cordova-plugin-media": {
             "PACKAGE_NAME": "org.leonetwork.newsreader"
         },
@@ -53,9 +63,6 @@
             "PACKAGE_NAME": "org.leonetwork.newsreader"
         },
         "cordova-plugin-splashscreen": {
-            "PACKAGE_NAME": "org.leonetwork.newsreader"
-        },
-        "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "org.leonetwork.newsreader"
         },
         "cordova-plugin-vibration": {
@@ -66,6 +73,9 @@
         }
     },
     "dependent_plugins": {
+        "es6-promise-plugin": {
+            "PACKAGE_NAME": "org.leonetwork.newsreader"
+        },
         "cordova-plugin-file": {
             "PACKAGE_NAME": "org.leonetwork.newsreader"
         }
